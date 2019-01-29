@@ -1,0 +1,84 @@
+<ng-container *ngIf="attributes">
+  <div class="padmin" *ngFor="let attribute of attributes">
+    <div class="coloralt boldfont contentheader">
+      {{attribute.Name}}
+    </div>
+    <div class="padmin" *ngIf="attribute.Networks">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-6" *ngFor="let net of attribute.Networks">
+          <!--style="border-right: 0.2px gray solid"-->
+          <div class="row">
+            <div class="col-6 pad4 centeralign">
+              <div class="margin3 pad4 contentnormal boldfont">{{net.Label}}</div>
+            </div>
+            <div class="col-6 pad4 centeralign">
+              <mat-slide-toggle [checked]="net.IsCovered" color="primary" class="example-margin"></mat-slide-toggle>
+            </div>
+          </div>
+          <ng-container *ngIf="net.IsCovered">
+            <ng-container *ngFor="let item of net.Items">
+              <div class="row" *ngIf="item.inputType == 'checkbox'">
+                <div class="col-6 pad4 centeralign">
+                  <div class="inlineflex centerheight">
+                    <mat-icon class="alticon margin3 " matPrefix>power_settings_new</mat-icon>
+                    <span class="margin3 contentsub text-uppercase">
+                      {{item.label}}
+                    </span>
+                  </div>
+                </div>
+                <div class="col-6 pad4 centeralign">
+                  <mat-slide-toggle [checked]="item.userValues" color="primary" class="example-margin"></mat-slide-toggle>
+                </div>
+              </div>
+              <div class="row" *ngIf="item.inputType == 'dropdown'">
+                <div class="col-6 pad4 centeralign">
+                  <div class="inlineflex centerheight">
+                    <mat-icon class="alticon margin3" matPrefix>playlist_play</mat-icon>
+                    <span class="margin3 contentsub text-uppercase">
+                      {{item.label}}
+                    </span>
+                  </div>
+                </div>
+                <div class="col-6 pad4 centeralign">
+                  <mat-form-field class="autowidth" *ngIf="item.values">
+                    <mat-select [(value)]="item.userValues">
+                      <mat-option *ngFor="let x of item.values" [value]="x.value">
+                        {{x.label}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row" *ngIf="item.inputType == 'text'">
+                <div class="col-6 pad4 centeralign">
+                  <div class="inlineflex centerheight">
+                    <mat-icon class="alticon margin3" matPrefix>dialpad</mat-icon>
+                    <span class="margin3 contentsub text-uppercase">
+                      {{item.label}}
+                    </span>
+                  </div>
+                </div>
+                <div class="col-6 pad4 centeralign">
+                  <mat-form-field class="autowidth">
+                    <input matInput placeholder="Enter" [(value)]="item.userValues">
+                  </mat-form-field>
+                </div>
+              </div>
+            </ng-container>
+          </ng-container>
+          <div class="row" *ngIf="!net.IsCovered">
+            <div class="col-12">
+              <div class="alertsecondary">
+                <div class="alertsymbol">&times;</div>
+                <div class="alertcontent">{{net.Label}} not available for {{attribute.Name}} </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<div *ngIf="!attributes && product && !coverage">
+    <div class="padmin">Please select a coverage</div>
+</div>

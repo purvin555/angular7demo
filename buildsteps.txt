@@ -1,0 +1,1 @@
+ng build --prod  --vendor-chunk=true  --extract-css=true --build-optimizer --aot --base-href ./

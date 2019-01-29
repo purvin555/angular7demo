@@ -1,0 +1,6 @@
+<div class="padtb4"></div>
+<div *ngFor="let p of productNames" class="padmin pointer" 
+    (click)="clickProduct(p)" 
+    [class.itemselected]="selectedProduct == p">
+  {{p}}
+</div>

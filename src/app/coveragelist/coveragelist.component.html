@@ -1,0 +1,22 @@
+<div class="backgroundalt coverallheight" *ngIf="product">
+    <div style="padding-top:20px;">
+      <mat-form-field style="width:100%!important;" class="padmin">
+        <mat-icon style="margin:6px;" class="alticon" matPrefix>search</mat-icon>
+        <input type="text" [(ngModel)]="searchStr" (ngModelChange)="search($event)" style="margin:3px;margin-bottom: 0px;" matInput placeholder="Search Benefits">
+      </mat-form-field>
+    </div>
+    <div *ngFor="let c of filtered"  
+          (click)="setCoverage(c)" 
+          class="padmin pointer" [class.itemselected]="selectedCoverage == c">
+      <div [attr.data-letters]="c.Name?.substr(0,2)">
+        <div class="inlinediv centerheight">
+          <div [class.itemselected]="selectedCoverage == c" class="coloralt boldfont">{{c.Name}}</div>
+          <div class="contentsub">{{c.Categories}}</div>
+        </div>
+      </div>
+    </div>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="backgroundalt coverallheight"  *ngIf="!product">    
+      <div class="padmin">Please select a product</div>
+  </div>

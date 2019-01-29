@@ -1,0 +1,40 @@
+<div class="row coverallheight" *ngIf="!isMobileView" (window:resize)="onResize($event)">
+  <div class="col-12 col-md-3 pad0 padtb4">
+    <app-productlist #prodlist1 (productChange)="product = $event"></app-productlist>
+  </div>
+  <div class="col-12 col-md-3 pad0 ">
+    <app-coveragelist [product]="product" (coverageChange)="coverage = $event"></app-coveragelist>
+  </div>
+  <div class="col-12 col-md-6 pad0">
+    <app-coverage [product]="product" [coverage]="coverage"></app-coverage>
+  </div>
+</div>
+
+<div *ngIf="isMobileView" (window:resize)="onResize($event)">
+  <div class="row" *ngIf="mobileState.showProducts">
+    <div class="col-12 pad0 padtb4">
+      <app-productlist #prodlist1 (productChange)="productChange($event)"></app-productlist>
+      <div class="padmin">
+         <small>* Click an item from list as it loads.</small>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="mobileState.showCoverages">
+    <div class="col-12 pad0">
+      <div class="padmin pointer itemselected" (click)="goToProductsView()"> &larr; Go back
+      </div>
+      <app-coveragelist [product]="product" (coverageChange)="coverageChange($event)"></app-coveragelist>
+    </div>
+  </div>
+  
+  <div class="row" *ngIf="mobileState.showAttributes">
+    <div class="col-12">
+      <div class="padmin pointer itemselected" (click)="goToCoveragesView()"> &larr; Go back
+      </div>
+      <div class="pad4">
+        <app-coverage [product]="product" [coverage]="coverage"></app-coverage>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <router-outlet></router-outlet> -->
