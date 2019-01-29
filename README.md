@@ -1,4 +1,4 @@
-### Purvin Angular 7 Demo
+### Purvin's Angular 7 Demo
 
 This is an responsive application developed using Angular 7 framework, Angular Material is a UI component library as well as Bootstrap CSS framework.
 
