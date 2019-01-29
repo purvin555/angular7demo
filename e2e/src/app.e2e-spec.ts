@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to benefitsconfig!');
+    expect(page.getTitleText()).toEqual('Welcome to Purvin Angular 7 Demo');
   });
 
   afterEach(async () => {

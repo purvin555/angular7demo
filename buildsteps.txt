@@ -1,1 +1,10 @@
 ng build --prod  --vendor-chunk=true  --extract-css=true --build-optimizer --aot --output-path=appdist  --base-href ./
+
+Pushing distribution to github as application 
+run command 
+git subtree push --prefix appdist  origin gh-pages
+
+if it is dist folder then
+git subtree push --prefix dist origin gh-pages
+
+Source : https://gist.github.com/cobyism/4730490
