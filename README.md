@@ -1,6 +1,6 @@
 ### Purvin's Angular 7 Demo
 
-This is an responsive application developed using Angular 7 framework, Angular Material is a UI component library as well as Bootstrap CSS framework.
+This is an responsive application developed using Angular 7 framework and Angular Material (a UI component library) as well as Bootstrap CSS framework.
 
 ## Check working demo at https://purvin555.github.io/angular7demo/
 
